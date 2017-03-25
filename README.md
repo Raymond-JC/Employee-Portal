@@ -48,9 +48,9 @@ Referenced libraries are already placed in the bin folder or you can individuall
 
 <i>Built With</i>  
 
-Eclipse IDE for Java Developers, Version: Kepler Service Release 1  
+1. Eclipse IDE for Java Developers, Version: Kepler Service Release 1  
      (using windows builder) <https://eclipse.org/windowbuilder/>  
-MySQL Workbench 6.3  
+2. MySQL Workbench 6.3  
 
 <b>Author</b>  
 
