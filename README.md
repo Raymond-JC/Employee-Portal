@@ -4,12 +4,14 @@ The application is developed to help keep track of employee details such as pers
 
 The application mainly has two logins:
 
-1) Employee user
+1> Employee user
   >Edit / Update employee details
+  
   >Submit Leave application
+  
   >Change password
   
-2. Admin user
+2> Admin user
   Create a employee user
   Update / Delete employee user details
   Set payroll details
