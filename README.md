@@ -5,7 +5,7 @@ The application is developed to help keep track of employee details such as pers
 The application mainly has two logins:
 
 1> Employee user
-  ♣ Edit / Update employee details
+  ♣ Edit / Update employee details</n>
   ♣ Submit Leave application  
   ♣ Change password
   
