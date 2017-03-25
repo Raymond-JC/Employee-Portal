@@ -6,8 +6,8 @@ The application mainly has two logins:
 
 1> Employee user.<br />
   ♣ Edit / Update employee details.<br />
-  ♣ Submit Leave application. 
-  ♣ Change password.
+  ♣ Submit Leave application.   
+  ♣ Change password.  
   
 2> Admin user
   ♣ Create a employee user
