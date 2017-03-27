@@ -31,7 +31,7 @@ Run the application from the login form.
 jdk1.8.0_111 and/or  
 jre1.8.0_121  
 
-Referenced libraries are already placed in the bin folder or you can individually search for them online  
+Referenced libraries are already placed in the 'lib ref' and 'excel jars' folder or you can individually search for them online , namely:   
  ♣ org-jdesktop-layout.jar  
  ♣ com.lowagie.text-2.1.7.jar  
  ♣ swingx-1.6.1.jar  
@@ -51,6 +51,7 @@ Referenced libraries are already placed in the bin folder or you can individuall
 1. Eclipse IDE for Java Developers, Version: Kepler Service Release 1  
      (using windows builder) <https://eclipse.org/windowbuilder/>  
 2. MySQL Workbench 6.3  
+
 
 <b>Author</b>  
 
