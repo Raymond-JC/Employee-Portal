@@ -21,7 +21,7 @@ The application is developed as a single frame style application that relies on 
 
 <b>Getting Started</b>
 
-In Eclipse use the import option from the File menu. If you downloaded the .rar file then extract it to a local disk then under general choose existing project and select the root folder (where you extracted the files to). Create SQL tables for employee details, admin login and employee leave applications.  
+In Eclipse use the import option from the File menu to import the project or download the whole project in a zip file. Create SQL tables for employee details, admin login and employee leave applications.  
 
 In the project code change the connection settings (url,username,pwd) to match the settings of your machine.
 Run the application from the login form.  
