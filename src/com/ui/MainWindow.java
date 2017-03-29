@@ -24,8 +24,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -129,7 +131,7 @@ public class MainWindow {
 	private JTextArea tA_Address_PA; 
 	
     private String user_name = "root"; // User name
-	private String pwd = "password1234"; // password required to connect to MySql server
+	private String pwd = "sunabeda#092"; // password required to connect to MySql server
 	private String url = "jdbc:mysql://localhost:3306/empdet_db?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false";
   
 			
@@ -677,11 +679,8 @@ public class MainWindow {
 		
 		final JXDatePicker jxdp_DOB = new JXDatePicker();
 		jxdp_DOB.setToolTipText("Date of Birth\r\n");
+		jxdp_DOB.setFormats(new SimpleDateFormat("dd/MM/yyyy"));
 		jxdp_DOB.getEditor().setText(DOB);
-		// -> cant use the following as it overwrites the DOB
-		// jxdp_DOB.setDate(Calendar.getInstance().getTime());
-		// -> this doesn't allow the editor to set the text as default format is dd/mm/yy
-		// jxdp_DOB.setFormats(new SimpleDateFormat("dd/MM/yyyy"));
 		GridBagConstraints gbc_jxdp_DOB = new GridBagConstraints();
 		gbc_jxdp_DOB.fill = GridBagConstraints.BOTH;
 		gbc_jxdp_DOB.insets = new Insets(0, 0, 5, 5);
@@ -916,6 +915,8 @@ public class MainWindow {
 		
 		final JXDatePicker jxdp_LeaveFrom = new JXDatePicker();
 		GridBagConstraints gbc_jxdp_LeaveFrom = new GridBagConstraints();
+		jxdp_LeaveFrom.setDate(Calendar.getInstance().getTime());
+		jxdp_LeaveFrom.setFormats(new SimpleDateFormat("dd/MM/yyyy"));
 		gbc_jxdp_LeaveFrom.fill = GridBagConstraints.BOTH;
 		gbc_jxdp_LeaveFrom.insets = new Insets(0, 0, 5, 5);
 		gbc_jxdp_LeaveFrom.gridx = 3;
@@ -942,6 +943,8 @@ public class MainWindow {
 		
 		final JXDatePicker jxdp_LeaveTo = new JXDatePicker();
 		GridBagConstraints gbc_jxdp_LeaveTo = new GridBagConstraints();
+		jxdp_LeaveTo.setDate(Calendar.getInstance().getTime());
+		jxdp_LeaveTo.setFormats(new SimpleDateFormat("dd/MM/yyyy"));
 		gbc_jxdp_LeaveTo.fill = GridBagConstraints.BOTH;
 		gbc_jxdp_LeaveTo.insets = new Insets(0, 0, 5, 5);
 		gbc_jxdp_LeaveTo.gridx = 3;
@@ -1241,7 +1244,7 @@ public class MainWindow {
 		
 		tF_EmailID = new JTextField();
 		tF_EmailID.setColumns(10);
-		tF_EmailID.setText(Email_Personal);
+		tF_EmailID.setText(Email_ID_Personal);
 		GridBagConstraints gbc_tF_EmailID = new GridBagConstraints();
 		gbc_tF_EmailID.anchor = GridBagConstraints.SOUTH;
 		gbc_tF_EmailID.fill = GridBagConstraints.HORIZONTAL;
@@ -1290,7 +1293,7 @@ public class MainWindow {
 		tF_PhoneNo.setText(""+Phone_No);
 		tF_PhoneNo.addKeyListener(new KeyAdapter() {
 		    public void keyTyped(KeyEvent e) { 
-		        if (tF_PhoneNo.getText().length() >= 10 ) // limit Phone No. to 10 characters
+		        if (tF_PhoneNo.getText().length() > 15 ) // limit Phone No. to 15 characters
 		            e.consume(); 
 		    }  
 		});
@@ -1343,7 +1346,7 @@ public class MainWindow {
 		tF_AltPhoneNo.setText(""+Alt_Phone_No);
 		tF_AltPhoneNo.addKeyListener(new KeyAdapter() {
 		    public void keyTyped(KeyEvent e) { 
-		        if (tF_AltPhoneNo.getText().length() >= 10 ) // limit Phone No. to 10 characters
+		        if (tF_AltPhoneNo.getText().length() > 15 ) // limit Phone No. to 15 characters
 		            e.consume(); 
 		    }  
 		});
@@ -1380,9 +1383,11 @@ public class MainWindow {
 			public void actionPerformed(ActionEvent e) {
 				try
 				{
-					String IQuery = "UPDATE `empdet_db`.`emp_table` SET `Website` = '"+tF_Website.getText()+"' , `Address` = '"+tF_Address.getText()+"' ,   `Pin_Code`  =  '"+tF_PinCode.getText()+"' ,  `State`  =  '"+tF_State.getText()+"'  "
-							+ ", `Email_ID_Personal`  =  '"+tF_EmailID.getText()+"' , `Landline_No` ='"+tF_LandlineNo.getText()+"' , `Phone_No` ='"+tF_PhoneNo.getText()+"' , `Alt_Phone_No` ='"+tF_AltPhoneNo.getText()+"'"
-									+ " WHERE `Emp_ID` =  '"+user+"'  ";
+					String IQuery = "UPDATE `empdet_db`.`emp_table` SET `Website` = '"+tF_Website.getText()+"' , `Address` = '"+tF_Address.getText()+"' , "
+							+ "  `Pin_Code`  =  '"+tF_PinCode.getText()+"' ,  `State`  =  '"+tF_State.getText()+"'  "
+							+ ", `Email_ID_Personal`  =  '"+tF_EmailID.getText()+"' , `Landline_No` ='"+tF_LandlineNo.getText()+"' , "
+							+ "`Phone_No` ='"+tF_PhoneNo.getText()+"' , `Alt_Phone_No` ='"+tF_AltPhoneNo.getText()+"'"
+							+ " WHERE `Emp_ID` =  '"+user+"'  ";
 					System.out.println(IQuery);//print on console
 					System.out.println("Connecting to a selected database...");
 
@@ -1804,7 +1809,6 @@ public class MainWindow {
 		Perm_Address_Details_Panel.add(label_41, gbc_label_41);
 		
 		tF_LandlineNo_PA = new JTextField();
-		tF_LandlineNo_PA.setText(""+LandlineNo_PA);
 		tF_LandlineNo_PA.setColumns(10);
 		tF_LandlineNo_PA.addKeyListener(new KeyAdapter() {
 		    public void keyTyped(KeyEvent e) { 
@@ -1830,11 +1834,10 @@ public class MainWindow {
 		Perm_Address_Details_Panel.add(label_42, gbc_label_42);
 		
 		tF_PhoneNo_PA = new JTextField();
-		tF_PhoneNo_PA.setText(""+PhoneNo_PA);
 		tF_PhoneNo_PA.setColumns(10);
 		tF_PhoneNo_PA.addKeyListener(new KeyAdapter() {
 		    public void keyTyped(KeyEvent e) { 
-		        if (tF_PhoneNo_PA.getText().length() >= 10 ) // limit Phone No to 10 characters
+		        if (tF_PhoneNo_PA.getText().length() >= 15 ) // limit Phone No to 15 characters
 		            e.consume(); 
 		    }  
 		});
@@ -1883,11 +1886,10 @@ public class MainWindow {
 		
 		tF_AltPhoneNo_PA = new JTextField();
 		tF_AltPhoneNo_PA.setToolTipText("Leave blank if not necessary");
-		tF_AltPhoneNo_PA.setText(""+AltPhoneNo_PA);
 		tF_AltPhoneNo_PA.setColumns(10);
 		tF_AltPhoneNo_PA.addKeyListener(new KeyAdapter() {
 		    public void keyTyped(KeyEvent e) { 
-		        if (tF_AltPhoneNo_PA.getText().length() >= 10 ) // limit Alt Phone No to 10 characters
+		        if (tF_AltPhoneNo_PA.getText().length() >= 15 ) // limit Alt Phone No to 15 characters
 		            e.consume(); 
 		    }  
 		});
@@ -2786,12 +2788,12 @@ public class MainWindow {
 		
 		JPanel ToDo_panel = new JPanel();
 		ToDo_panel.setVisible(false);
-		Outer_panel.add(ToDo_panel, "name_4449077568578");
+		Outer_panel.add(ToDo_panel, "TODO_Panel");
 		ToDo_panel.setLayout(null);
 		
 		JTextArea txtr_ToDo = new JTextArea();
 		txtr_ToDo.setWrapStyleWord(true);
-		txtr_ToDo.setText("Complete the reports and link them to the admin control panel\r\n(remove redundant code)\r\n\r\nImprove or add a better save / export option to save the tables to pdf, doc , etc.\r\n \r\nadd a smtp and/ or sms protocol for notifications\r\n");
+		txtr_ToDo.setText("Complete the reports and link them to the admin control panel\r\n(remove redundant code)\r\n\r\nImprove or add a better save / export option to save the tables to pdf, doc , etc.\r\n \r\nadd a smtp and/ or sms protocol for notifications\r\n Add a news/events page?");
 		txtr_ToDo.setBounds(41, 32, 764, 314);
 		ToDo_panel.add(txtr_ToDo);
 		
