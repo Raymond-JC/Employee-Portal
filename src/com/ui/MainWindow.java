@@ -1381,7 +1381,7 @@ public class MainWindow {
 				try
 				{
 					String IQuery = "UPDATE `empdet_db`.`emp_table` SET `Website` = '"+tF_Website.getText()+"' , `Address` = '"+tF_Address.getText()+"' ,   `Pin_Code`  =  '"+tF_PinCode.getText()+"' ,  `State`  =  '"+tF_State.getText()+"'  "
-							+ ", `EmailID`  =  '"+tF_EmailID.getText()+"' , `LandlineNo` ='"+tF_LandlineNo.getText()+"' , `PhoneNo` ='"+tF_PhoneNo.getText()+"' , `AltPhoneNo` ='"+tF_AltPhoneNo.getText()+"'"
+							+ ", `Email_ID_Personal`  =  '"+tF_EmailID.getText()+"' , `Landline_No` ='"+tF_LandlineNo.getText()+"' , `Phone_No` ='"+tF_PhoneNo.getText()+"' , `Alt_Phone_No` ='"+tF_AltPhoneNo.getText()+"'"
 									+ " WHERE `Emp_ID` =  '"+user+"'  ";
 					System.out.println(IQuery);//print on console
 					System.out.println("Connecting to a selected database...");
