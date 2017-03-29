@@ -1343,7 +1343,7 @@ public class MainWindow {
 		tF_AltPhoneNo.setText(""+Alt_Phone_No);
 		tF_AltPhoneNo.addKeyListener(new KeyAdapter() {
 		    public void keyTyped(KeyEvent e) { 
-		        if (tF_AltPhoneNo.getText().length() >= 6 ) // limit Phone No. to 10 characters
+		        if (tF_AltPhoneNo.getText().length() >= 10 ) // limit Phone No. to 10 characters
 		            e.consume(); 
 		    }  
 		});
@@ -2563,6 +2563,7 @@ public class MainWindow {
 		gbc_checkbox_EmailPersonal.gridy = 4;
 		Notifications_Panel.add(checkbox_EmailPersonal, gbc_checkbox_EmailPersonal);
 		
+		try{
 		if (SMS_Work.contains("Yes"))
 			checkbox_SmsWorkPhone.setSelected(true);
 		if (Email_Work.contains("Yes"))
@@ -2571,7 +2572,11 @@ public class MainWindow {
 			checkbox_EmailPersonal.setSelected(true);
 		if (SMS_Personal.contains("Yes"))
 			checkbox_SmsPersonalPhone.setSelected(true);
-		
+		}
+		catch (Exception ex1)
+		{
+			System.out.println(ex1);
+		}
 		// <---------------->
 		
 		JButton btn_SaveSettings = new JButton("Save Settings");
